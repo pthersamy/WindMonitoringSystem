@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Wind Monitoring System";
+}
+<style type="text/css">
+    .color-black
+    {
+        color: black;
+    }
+
+    .color-purple
+    {
+        color: purple;
+    }
+
+    .color-red
+    {
+        color: red;
+    }
+</style>
+<h2>Wind Monitoring System</h2>
+
+<div ng-controller="WindController">
+    <div>
+        <div class="form-group">
+            <label>State</label>
+            <select class="form-control" ng-model="model.SelectedState" ng-change="GetCitiesByState()">
+                <option ng-repeat="x in StateList" value="{{x.StateId}}">{{x.StateName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <select class="form-control" ng-model="model.SelectedCity" ng-change="GetStationCode()">
+                <option ng-repeat="x in CityList" value="{{x.CityId}}">{{x.CityName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Station Code</label>
+            <input type="text" class="form-control" ng-disabled="true" ng-model="model.StationCode" />
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" ng-model="Date" placeholder="yyyy-MM-dd" min="1900-01-01" max="2999-12-31" />
+        </div>
+        <div class="form-group">
+            <label>Predicted Speed(km/h)</label>
+            <input type="text" class="form-control" ng-disabled="true" ng-model="model.PredictedSpeed" />
+        </div>
+        <div class="form-group">
+            <label>Actual Speed</label>
+            <input type="text" class="form-control" ng-model="model.ActualSpeed" ng-change="GetVariance()" />
+        </div>
+        <div class="form-group">
+            <label>Variance</label>
+            <input type="text" class="form-control" ng-model="model.Variance" ng-class="GetVarianceColor()" />
+        </div>
+        <div class="form-group">
+            <input type="button" class="btn-primary" value="Save" id="btnSave" ng-click="SaveWindMonitoringSys()" />
+            <input type="button" class="btn-primary" value="Cancel" id="btnCancel" />
+        </div>
+    </div>
+</div>
+<script>
+    
+</script>
